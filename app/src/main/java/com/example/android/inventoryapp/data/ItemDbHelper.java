@@ -29,6 +29,7 @@ public class ItemDbHelper extends SQLiteOpenHelper {
                 + SneakerEntry.COLUMN_SNEAKER_PRICE + " INTEGER, "
                 + SneakerEntry.COLUMN_SNEAKER_QUANTITY +  " INTEGER, "
                 + SneakerEntry.COLUMN_SUPPLIER_NAME + " TEXT NOT NULL, "
+                + SneakerEntry.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + SneakerEntry.COLUMN_SUPPLIER_PHONE_NUMBER + " TEXT);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_SNEAKERS_TABLE);

@@ -1,5 +1,7 @@
 package com.example.android.inventoryapp.data;
 
+import android.content.ContentResolver;
+import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
@@ -8,8 +10,23 @@ import android.provider.BaseColumns;
 
 public class ItemContract {
     private ItemContract() {};
+    public static final String CONTENT_AUTHORITY = "com.example.android.inventoryapp";
+    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+    public static final String PATH_SNEAKERS= "sneakers";
 
     public static final class SneakerEntry implements BaseColumns {
+
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_SNEAKERS);
+
+
+        public static final String CONTENT_LIST_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_SNEAKERS;
+
+        /**
+         * The MIME type of the {@link #CONTENT_URI} for a single pet.
+         */
+        public static final String CONTENT_ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_SNEAKERS;
 
         /** Name of database table for sneakers */
         public final static String TABLE_NAME = "sneakers";
@@ -48,6 +65,14 @@ public class ItemContract {
          * Type: TEXT
          */
         public final static String COLUMN_SUPPLIER_PHONE_NUMBER = "supplier_phone_number";
+
+
+        /**
+         * Phone number of the supplier
+         *
+         * Type: TEXT
+         */
+        public final static String COLUMN_ID = "_id";
 
     }
 }
